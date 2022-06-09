@@ -35,6 +35,19 @@ module.exports = {
     }
   },
 
+  // crear producto
+  post: async (req, res) => {
+    const { body } = req;
+
+    try {
+      const product = await productModel.create(body);
+      res.status(201).send(product);
+    } catch (error) {
+      logger.error(error);
+      res.status(500).send(error);
+    }
+  },
+
   // actualizar producto
   put: async (req, res) => {
     const { body } = req;
@@ -43,19 +56,6 @@ module.exports = {
     try {
       const update = await productModel.updateOne({ _id: id }, { $set: body });
       res.status(201).send(update);
-    } catch (error) {
-      logger.error(error);
-      res.status(500).send(error);
-    }
-  },
-
-  // crear producto
-  post: async (req, res) => {
-    const { body } = req;
-
-    try {
-      await productModel.create(body);
-      res.status(201).redirect("/admin/products");
     } catch (error) {
       logger.error(error);
       res.status(500).send(error);
