@@ -10,12 +10,20 @@ const deleteProduct = async () => {
   // GET ID test
   const getId = await axios.get(`${PRODAXIOS_URL}/${data._id}`);
   console.log("Data: ", getId.data);
+  // PUT test
+  const update = await util.updateProduct()
+  try {
+    const put = await axios.put(`${PRODAXIOS_URL}/${data._id}`, update);
+    console.log("Updated: ", put.data);
+  } catch (error) {
+    console.log("Error: ", error);    
+  }
+  // GET test
+  const getAll = await axios.get(PRODAXIOS_URL);
+  console.log("All: ", getAll.data);
   // DELETE test
   const del = await axios.delete(`${PRODAXIOS_URL}/${data._id}`);
   console.log("Deleted: ", del.data);
-  // PUT test
-  const put = await axios.put(`${PRODAXIOS_URL}/${data._id}`, product);
-  console.log("Updated: ", put.data);
 };
 
 module.exports = deleteProduct();

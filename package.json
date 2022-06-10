@@ -12,8 +12,8 @@
     "test:artillery": "artillery quick --count=50 -n 20 http://localhost:8080/login> result_Art-Fork.txt",
     "test:artillery-cluster": "artillery quick --count=50 -n 20 http://localhost:8080> result_Art-cluster.txt",
     "lint": "eslint app.js",
-    "test:axios": "node -r dotenv/config ./test/axios/delete.test.js",
-    "test:mocha": "mocha -r dotenv/config ./test/mocha/unit/*.test.js"
+    "test:axios": "node -r dotenv/config ./test/axios/crud.test.js",
+    "test:mocha": "mocha -r dotenv/config ./test/mocha/unit/*.test.js --timeout 10000 --reporter mocha-junit-reporter --exit"
   },
   "author": "",
   "license": "ISC",
