@@ -1,16 +1,11 @@
 const faker = require("faker");
 
-const createProduct = async () => ({
-  title: faker.commerce.productName(),
-  price: faker.commerce.price(),
-  description: faker.lorem.paragraph(),
-  thumbnail: faker.image.imageUrl(),
-  stock: faker.datatype.number(),
-  code: faker.random.alphaNumeric(),
-  timestamp: Date.now()
-});
 
 module.exports = {
+  getAllProducts: async () => {
+    const { data } = await axios.get(PRODAXIOS_URL);
+    return data;
+  },
   createProduct: async () => ({
     title: faker.commerce.productName(),
     price: faker.commerce.price(),
@@ -20,6 +15,11 @@ module.exports = {
     code: faker.random.alphaNumeric(),
     timestamp: Date.now()
   }),
+
+  getProductId: async () => {
+    const { data } = await axios.get(PRODAXIOS_URL);
+    return data[0]._id;
+  },
 
   deleteProduct: async (product) => {
     const res = await request(app)

@@ -12,7 +12,7 @@
     "test:artillery": "artillery quick --count=50 -n 20 http://localhost:8080/login> result_Art-Fork.txt",
     "test:artillery-cluster": "artillery quick --count=50 -n 20 http://localhost:8080> result_Art-cluster.txt",
     "lint": "eslint app.js",
-    "test:axios": "node -r dotenv/config ./test/axios/post.js",
+    "test:axios": "node -r dotenv/config ./test/axios/delete.test.js",
     "test:mocha": "mocha -r dotenv/config ./test/mocha/unit/*.test.js"
   },
   "author": "",
